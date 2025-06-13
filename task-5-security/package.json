@@ -1,0 +1,57 @@
+{
+  "name": "@k3ss/security-framework",
+  "version": "1.0.0",
+  "description": "Enterprise-grade security framework for K3SS AI Coder with zero-trust architecture, compliance, and threat detection",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-node src/test-runner.ts",
+    "test:watch": "nodemon --exec ts-node src/test-runner.ts",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "security",
+    "zero-trust",
+    "authentication",
+    "authorization",
+    "encryption",
+    "compliance",
+    "gdpr",
+    "ccpa",
+    "soc2",
+    "threat-detection",
+    "audit",
+    "enterprise"
+  ],
+  "author": "K3SS Team",
+  "license": "MIT",
+  "dependencies": {
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0",
+    "nodemon": "^3.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k3ss-official/k3ss-ai-coder.git",
+    "directory": "task-5-security"
+  },
+  "bugs": {
+    "url": "https://github.com/k3ss-official/k3ss-ai-coder/issues"
+  },
+  "homepage": "https://github.com/k3ss-official/k3ss-ai-coder/tree/main/task-5-security"
+}
+
