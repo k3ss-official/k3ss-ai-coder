@@ -1,0 +1,19 @@
+name: quality-check
+description: Run code quality and security checks
+trigger:
+  type: git_hook
+steps:
+  - name: Lint code
+    command: npm
+    args:
+      - run
+      - lint
+  - name: Type check
+    command: npm
+    args:
+      - run
+      - type-check
+  - name: Security audit
+    command: npm
+    args:
+      - audit

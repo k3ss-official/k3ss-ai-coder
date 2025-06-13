@@ -1,0 +1,23 @@
+name: deploy-staging
+description: Deploy application to staging environment
+trigger:
+  type: git_hook
+steps:
+  - name: Install dependencies
+    command: npm
+    args:
+      - install
+  - name: Run tests
+    command: npm
+    args:
+      - test
+  - name: Build application
+    command: npm
+    args:
+      - run
+      - build
+  - name: Deploy to staging
+    command: npm
+    args:
+      - run
+      - deploy:staging
