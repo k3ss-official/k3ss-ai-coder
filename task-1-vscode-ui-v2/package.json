@@ -1,0 +1,224 @@
+{
+  "name": "k3ss-ai-coder-ultimate",
+  "displayName": "K3SS AI Coder - Ultimate Self-Contained Assistant",
+  "description": "Complete AI-powered code assistant with built-in AI models, browser automation, and advanced features - no external services required",
+  "version": "2.0.0",
+  "publisher": "k3ss-official",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "AI",
+    "Programming Languages",
+    "Machine Learning",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "assistant",
+    "code",
+    "automation",
+    "self-contained",
+    "offline",
+    "local",
+    "browser",
+    "cli"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "k3ss-ai.openChat",
+        "title": "Open AI Chat",
+        "category": "K3SS AI",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "k3ss-ai.generateCode",
+        "title": "Generate Code",
+        "category": "K3SS AI",
+        "icon": "$(code)"
+      },
+      {
+        "command": "k3ss-ai.analyzeCode",
+        "title": "Analyze Code",
+        "category": "K3SS AI",
+        "icon": "$(search)"
+      },
+      {
+        "command": "k3ss-ai.refactorCode",
+        "title": "Refactor Code",
+        "category": "K3SS AI",
+        "icon": "$(tools)"
+      },
+      {
+        "command": "k3ss-ai.researchWeb",
+        "title": "Research Web",
+        "category": "K3SS AI",
+        "icon": "$(globe)"
+      },
+      {
+        "command": "k3ss-ai.runCliCommand",
+        "title": "Run CLI Command",
+        "category": "K3SS AI",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "k3ss-ai.openSettings",
+        "title": "Open Settings",
+        "category": "K3SS AI",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "k3ss-ai.showStatus",
+        "title": "Show Status",
+        "category": "K3SS AI",
+        "icon": "$(pulse)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "k3ss-ai",
+          "title": "K3SS AI Assistant",
+          "icon": "$(robot)"
+        }
+      ]
+    },
+    "views": {
+      "k3ss-ai": [
+        {
+          "id": "k3ss-ai.chatView",
+          "name": "AI Chat",
+          "type": "webview"
+        },
+        {
+          "id": "k3ss-ai.contextView",
+          "name": "Context",
+          "type": "tree"
+        },
+        {
+          "id": "k3ss-ai.statusView",
+          "name": "Status",
+          "type": "tree"
+        },
+        {
+          "id": "k3ss-ai.modelsView",
+          "name": "AI Models",
+          "type": "tree"
+        }
+      ]
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "k3ss-ai.generateCode",
+          "group": "k3ss-ai@1",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "k3ss-ai.analyzeCode",
+          "group": "k3ss-ai@2",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "k3ss-ai.refactorCode",
+          "group": "k3ss-ai@3",
+          "when": "editorHasSelection"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "k3ss-ai.openChat",
+        "key": "ctrl+shift+k",
+        "mac": "cmd+shift+k"
+      },
+      {
+        "command": "k3ss-ai.generateCode",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g"
+      }
+    ],
+    "configuration": {
+      "title": "K3SS AI Coder",
+      "properties": {
+        "k3ss-ai.aiProvider": {
+          "type": "string",
+          "default": "built-in",
+          "enum": ["built-in", "openai", "anthropic", "ollama"],
+          "description": "AI provider to use"
+        },
+        "k3ss-ai.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API key (optional)"
+        },
+        "k3ss-ai.anthropicApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Anthropic API key (optional)"
+        },
+        "k3ss-ai.ollamaEndpoint": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama endpoint (optional)"
+        },
+        "k3ss-ai.enableBrowserAutomation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable browser automation features"
+        },
+        "k3ss-ai.enableWebResearch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable web research capabilities"
+        },
+        "k3ss-ai.enableCliIntegration": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable CLI integration features"
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k3ss-official/k3ss-ai-coder.git"
+  },
+  "homepage": "https://github.com/k3ss-official/k3ss-ai-coder#readme",
+  "bugs": {
+    "url": "https://github.com/k3ss-official/k3ss-ai-coder/issues"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.4",
+    "@vscode/test-electron": "^2.2.0",
+    "@vscode/vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "puppeteer": "^21.0.0",
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.3.0",
+    "ws": "^8.14.0",
+    "crypto": "^1.0.1"
+  }
+}
+
