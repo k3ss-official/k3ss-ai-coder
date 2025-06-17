@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
     const securityManager = new SecurityManager(context);
 
     // Initialize providers
-    const chatProvider = new ChatWebviewProvider(context.extensionUri, aiManager, browserManager, cliManager);
+    const chatProvider = new ChatWebviewProvider(context.extensionUri, context);
     const contextProvider = new ContextTreeProvider();
     const statusProvider = new StatusTreeProvider(aiManager, browserManager, cliManager, securityManager);
     const modelsProvider = new ModelsTreeProvider(aiManager);

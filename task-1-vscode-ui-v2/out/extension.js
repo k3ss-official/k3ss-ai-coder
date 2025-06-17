@@ -40,7 +40,7 @@ function activate(context) {
     const cliManager = new CLIManager_1.CLIManager(context);
     const securityManager = new SecurityManager_1.SecurityManager(context);
     // Initialize providers
-    const chatProvider = new ChatWebviewProvider_1.ChatWebviewProvider(context.extensionUri, aiManager, browserManager, cliManager);
+    const chatProvider = new ChatWebviewProvider_1.ChatWebviewProvider(context.extensionUri, context);
     const contextProvider = new TreeProviders_1.ContextTreeProvider();
     const statusProvider = new TreeProviders_1.StatusTreeProvider(aiManager, browserManager, cliManager, securityManager);
     const modelsProvider = new TreeProviders_1.ModelsTreeProvider(aiManager);
